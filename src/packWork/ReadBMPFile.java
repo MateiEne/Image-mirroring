@@ -1,5 +1,6 @@
 package packWork;
 
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,11 +20,9 @@ public class ReadBMPFile {
         this.fileName = fileName;
     }
 
-    public static BMP readBinaryImageBMP(String fileName) {
-        FileInputStream fileStream = null;
-
+    public static BMP readBinaryImageBMP(BufferedInputStream dataStream) {
         try {
-            fileStream = new FileInputStream(fileName);
+            BufferedInputStream fileStream = dataStream;
 
             DataConversion dataConversion = new DataConversion();
             byte[] bmpFH = new byte[FH_SIZE];
@@ -55,14 +54,6 @@ public class ReadBMPFile {
         } catch (IOException exception) {
             System.out.println("Reading unsuccessful");
 
-        } finally {
-            if (fileStream != null) {
-                try {
-                    fileStream.close();
-                } catch (IOException exception) {
-                    System.out.println("Closing unsuccessful");
-                }
-            }
         }
 
         return null;
