@@ -19,4 +19,11 @@ public class DataConversion {
         }
     }
 
+    public void intToByteArray(byte[] byteArray, int offset, int value) {
+        intToByteArray(byteArray, offset, value, 4);
+    }
+
+    public void intToByteArray(byte[] byteArray, int value) {
+        intToByteArray(byteArray, 0, value, 4);
+    }
 }
